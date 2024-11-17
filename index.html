@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 MESES AMANDOTE</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            flex-direction: column;
+        }
+
+        .heart-container {
+            text-align: center;
+            position: relative;
+        }
+
+        .heart {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            position: relative;
+            transform: rotate(45deg);
+            margin: 0 auto;
+            box-shadow: 0 0 30px #f20404;
+            animation: beat 1s infinite;
+            z-index: 1;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -75px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: -75px;
+        }
+
+        .text-inside {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 2; /* Asegura que el texto esté por encima del corazón */
+        }
+
+        .text-below {
+            color: white;
+            font-size: 20px;
+            margin-top: 10px;
+            z-index: 0; /* Asegura que el texto debajo esté correctamente posicionado */
+        }
+
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1) rotate(45deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <p class="text-below">Dele click al corazón Flaquita 💕</p>
+        <br> <br> <br>
+    <p class="text-below">Tres meses de amor, de lucha y de abrazos,
+        de noches oscuras donde casi nos perdemos,
+        pero el sol de tu mirada, mi dulce consuelo,
+        el amor que siempre nos tenemos nos hace volver,
+        y no dejarnos perder.</p>
+        <br> <br> <br>
+    <div class="heart-container">        
+        <div class="heart"></div>
+        <div class="text-inside">Te Amo</div>
+        <br> <br> <br>
+        <p class="text-below">"A pesar de las sombras que casi nos vencen,
+            nuestro amor brilla más fuerte, ya no me puedo ver sin usted, quiero una vida a su lado
+            TE AMO FLACA HERMOSA"</p>
+    </div>
+
+    <!-- Agregar el archivo de sonido -->
+    <audio id="heartbeat-sound" src="latido.mp3" preload="auto"></audio>
+
+    <script>
+        // Obtener el elemento de audio
+        const heartbeatSound = document.getElementById("heartbeat-sound");
+
+        // Reproducir el sonido cada vez que el corazón hace el latido
+        document.querySelector(".heart").addEventListener("animationiteration", function() {
+            heartbeatSound.play();
+        });
+    </script>
+</body>
+</html>
